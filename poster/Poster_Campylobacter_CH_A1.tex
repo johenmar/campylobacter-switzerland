@@ -1,0 +1,191 @@
+% ================================================================
+% Campylobacteriosis in Switzerland 2013-2026: festive peak and temperature
+% A1 portrait poster (594 x 841 mm). Compile twice: xelatex Poster_Campylobacter_CH_A1.tex
+% Font: TeX Gyre Heros (free Helvetica clone, GUST Font License), shipped in ../fonts/.
+% ================================================================
+\documentclass{article}
+\usepackage[paperwidth=594mm,paperheight=841mm,margin=20mm,top=18mm,bottom=15mm]{geometry}
+\usepackage{fontspec}
+\IfFileExists{../fonts/texgyreheros-regular.otf}{%
+  \setmainfont{texgyreheros-regular.otf}[Path=../fonts/, BoldFont=texgyreheros-bold.otf,
+    ItalicFont=texgyreheros-italic.otf, BoldItalicFont=texgyreheros-bolditalic.otf]
+}{%
+  \IfFontExistsTF{Helvetica}{\setmainfont{Helvetica}}{\setmainfont{TeX Gyre Heros}}%
+}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,raster}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{microtype}
+\usepackage[document]{ragged2e}
+\pagestyle{empty}
+
+\definecolor{blue}{HTML}{2A78D6}
+\definecolor{orange}{HTML}{EB6834}
+\definecolor{ink}{HTML}{1F1F1E}
+\definecolor{ink2}{HTML}{52514E}
+\definecolor{paper}{HTML}{FCFCFB}
+\definecolor{rule}{HTML}{E4E2DC}
+\definecolor{tint}{HTML}{EEF4FC}
+\definecolor{tintor}{HTML}{FDF0EA}
+\pagecolor{paper}
+\color{ink}
+
+\newcommand{\Body}{\fontsize{18.5}{24}\selectfont}
+\newcommand{\Small}{\fontsize{15.5}{20}\selectfont\color{ink2}}
+\newcommand{\Tiny}{\fontsize{12.5}{16}\selectfont\color{ink2}}
+\newcommand{\Head}{\fontsize{26}{30}\selectfont\bfseries}
+\newcommand{\Eyebrow}[1]{{\fontsize{14.5}{17}\selectfont\color{ink2}\addfontfeature{LetterSpace=12}\MakeUppercase{#1}}}
+\newcommand{\Hugenum}{\fontsize{60}{60}\selectfont\bfseries}
+\newcommand{\mn}{\char"2212\relax}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\setlist{nosep,leftmargin=1.0em,itemsep=5pt,label={\color{ink2}\textbullet}}
+\hyphenpenalty=4000
+\renewcommand{\arraystretch}{1.22}
+
+\tcbset{
+  panel/.style={enhanced,valign=top,colback=white,colframe=rule,boxrule=0.9pt,arc=6pt,
+    left=16pt,right=16pt,top=14pt,bottom=14pt,boxsep=0pt},
+  tile/.style={enhanced,colback=tint,colframe=tint,arc=6pt,boxrule=0pt,
+    left=20pt,right=20pt,top=14pt,bottom=15pt,boxsep=0pt}
+}
+\newcommand{\panelhead}[1]{{\Head #1}\par\vspace{2pt}{\color{rule}\rule{\linewidth}{1.2pt}}\par\vspace{3pt}}
+\newcommand{\fig}[4]{%
+  {\fontsize{22}{27}\selectfont\bfseries{\color{blue}#1}\quad #2\hfill\mdseries{\fontsize{15.5}{18}\selectfont\color{ink2}#3}\par}\vspace{6pt}%
+  \includegraphics[width=\linewidth]{#4}\par\vspace{3pt}}
+
+\begin{document}\Body
+
+% ================= HEADER =================
+\begin{minipage}[t]{0.80\textwidth}\vspace{0pt}
+  {\fontsize{56}{62}\selectfont\bfseries Why Campylobacter infections\\peak in January, not only in summer\par}
+  \vspace{12pt}
+  {\fontsize{24}{31}\selectfont\color{ink2} Campylobacteriosis in Switzerland and Liechtenstein, January 2013 -- August 2026\\
+  103,485 reported cases\enspace•\enspace 164 months\enspace•\enspace FOPH reporting data and MeteoSwiss temperatures\par}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.18\textwidth}\vspace{0pt}\raggedleft
+  \vspace{10pt}
+  {\fontsize{24}{30}\selectfont\bfseries Joe Martin\par}
+  {\Small jomartin@ethz.ch\par}
+\end{minipage}
+
+\vspace{12pt}{\color{ink}\rule{\textwidth}{2.5pt}}\vspace{8pt}
+
+{\fontsize{21}{27}\selectfont\textbf{Conclusion.} January has 78\% more reported cases than its cold temperature predicts; salmonellosis, used as a comparison, shows a much smaller excess. This fits the known link to meat fondue over the holidays [1]. Warmer-than-usual months go along with a few percent more cases.\par}
+\vspace{10pt}
+
+% ================= KEY NUMBERS =================
+\begin{tcbraster}[raster columns=3,raster equal height,raster column skip=18pt]
+\begin{tcolorbox}[tile]
+  \Eyebrow{Model estimate\enspace·\enspace Festive peak}\par\vspace{4pt}
+  {\Hugenum\color{blue}×\,1.78\par}\vspace{6pt}
+  {\bfseries more cases in January than expected from its temperature and the year's level.\par}
+  {\Small 95\% CI 1.63--1.94.\quad December ×\,1.50 (1.32--1.70)\par}
+\end{tcolorbox}
+\begin{tcolorbox}[tile,colback=tintor,colframe=tintor]
+  \Eyebrow{Model estimate\enspace·\enspace Comparison}\par\vspace{4pt}
+  {\Hugenum\color{orange}×\,1.19\par}\vspace{6pt}
+  {\bfseries for salmonellosis in January, which is not known to be linked to fondue.\par}
+  {\Small 95\% CI 1.02--1.38; December ×\,0.94. Campylobacter excess 1.49 times larger (1.25--1.78)\par}
+\end{tcolorbox}
+\begin{tcolorbox}[tile]
+  \Eyebrow{Figure D\enspace·\enspace Temperature}\par\vspace{4pt}
+  {\Hugenum\color{blue}+3.8\%\par}\vspace{6pt}
+  {\bfseries cases per 1\,°C warmer than usual for the time of year (same and previous month).\par}
+  {\Small 95\% CI +1.4 to +6.3\%. Salmonellosis +1.6\% (\mn1.1 to +4.3\%)\par}
+\end{tcolorbox}
+\end{tcbraster}
+
+\vspace{10pt}
+% ================= TAKEAWAY =================
+\begin{tcolorbox}[enhanced,colback=ink,colframe=ink,arc=6pt,boxrule=0pt,left=26pt,right=26pt,top=18pt,bottom=18pt,boxsep=0pt]
+\color{white}
+\begin{minipage}[t]{0.555\linewidth}\vspace{0pt}
+{\fontsize{25}{30}\selectfont\bfseries What this means\par}\vspace{8pt}
+{\fontsize{20}{26}\selectfont Campylobacter has \textbf{two seasons}: a summer wave that goes along with temperature, and a \textbf{holiday peak} that temperature does not account for. The January excess has become smaller since 2013 but has not disappeared. Separate boards and plates for raw and cooked meat at fondue remain a simple prevention message.\par}
+\end{minipage}\hfill
+{\color{white!35!ink}\vrule width 1.2pt}\hfill
+\begin{minipage}[t]{0.39\linewidth}\vspace{0pt}
+{\fontsize{25}{30}\selectfont\bfseries What these data cannot show\par}\vspace{8pt}
+{\fontsize{18.5}{23.5}\selectfont
+\begin{itemize}[label={\color{white!60!ink}\textbullet},itemsep=6pt]
+\item \textbf{The cause of single cases.} Monthly national counts, no food histories; fondue is the explanation from [1], not tested here.
+\item \textbf{Infections, only reports.} Testing and reporting habits shape the counts.
+\item \textbf{Weeks.} Monthly data blur the exact timing.
+\end{itemize}\par}
+\end{minipage}
+\end{tcolorbox}
+
+\vspace{11pt}
+% ================= FIGURES =================
+{\Eyebrow{Four views of the evidence}\par}
+\vspace{6pt}
+\begin{tcolorbox}[panel,top=15pt,bottom=14pt]
+\begin{minipage}[t]{0.485\linewidth}\vspace{0pt}
+\fig{A}{Two waves a year: summer and January.}{n = 164 months}{../figures/fig_A_timeseries.png}
+{\Small Reported cases per 100,000 inhabitants, scaled to 30 days. August 2026 is the highest month in the series; January--August 2026 is 33\% above the 2023--25 average (salmonellosis +23\%).\par}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.485\linewidth}\vspace{0pt}
+\fig{B}{January sits far above the temperature curve.}{2013--2026}{../figures/fig_B_temperature_scatter.png}
+{\Small Each point is one month. Mean of 7 MeteoSwiss stations (Basel, Bern, Geneva, Lucerne, Lugano, St.\ Gallen, Zurich).\par}
+\end{minipage}
+
+\vspace{20pt}
+\begin{minipage}[t]{0.485\linewidth}\vspace{0pt}
+\fig{C}{January is above expectation in 13 of 14 years.}{by year}{../figures/fig_C_january_by_year.png}
+{\Small Observed / expected January cases, adjusted for temperature and the year's level (negative binomial model, model-based 95\% CI). Relative excess: \mn2.1\% per year (95\% CI \mn3.3 to \mn1.0\%); about 420 extra January cases in 2013--14, 110--300 in 2023--26.\par}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.485\linewidth}\vspace{0pt}
+\fig{D}{Warm months: a few percent more cases.}{n = 164 months}{../figures/fig_D_temperature_effect.png}
+{\Small Temperature as deviation from the 2013--26 mean of the same calendar month; model with calendar-month and year effects, robust (Newey--West) 95\% CI.\par}
+\end{minipage}
+\end{tcolorbox}
+
+\vspace{15pt}
+% ================= BOTTOM ROW =================
+\begin{tcbraster}[raster columns=3,raster equal height,raster column skip=18pt,raster every box/.style={fontupper=\fontsize{17.5}{22.5}\selectfont}]
+\begin{tcolorbox}[panel]
+\panelhead{Background}
+Campylobacteriosis has been the most common notifiable food-associated infection in Switzerland since 1995 [2], mostly from chicken meat. A case--control study linked the winter peak to meat fondue (fondue chinoise) over Christmas and New Year [1]; a time-series study for 2008--12 found the same peak [2]. This project asks whether the peak persists, how large it is, and how temperature shapes the rest of the year.
+\end{tcolorbox}
+\begin{tcolorbox}[panel]
+\panelhead{Data}
+{\Small
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+Campylobacteriosis cases, Jan 2013--Aug 2026 & \textbf{\color{ink}103,485}\\
+Salmonellosis cases (comparison) & \textbf{\color{ink}22,799}\\
+Months & \textbf{\color{ink}164}\\
+MeteoSwiss climate stations & \textbf{\color{ink}7}\\
+\bottomrule
+\end{tabularx}\par}\vspace{4pt}
+FOPH Infectious Diseases Dashboard (mandatory reporting, CH and FL), release of 9 September 2026. MeteoSwiss homogeneous monthly means.
+\end{tcolorbox}
+\begin{tcolorbox}[panel]
+\panelhead{Methods \& limitations}
+Negative binomial regression with population offset; robust standard errors for autocorrelation.\par\vspace{2pt}
+\begin{itemize}
+\item \textbf{Temperature effect:} +2.2 to +4.9\% in nine sensitivity analyses; weakest without Dec/Jan (CI includes 0).
+\item \textbf{January estimate:} ×\,1.71 to ×\,1.78 in four model variants; compared mainly with February.
+\item \textbf{Salmonellosis} shows a small, model-dependent January excess: part of the signal may be testing and reporting after the holidays.
+\end{itemize}
+\end{tcolorbox}
+\end{tcbraster}
+
+\vfill
+% ================= FOOTER =================
+{\color{rule}\rule{\textwidth}{1.2pt}}\vspace{5pt}
+\begin{minipage}[t]{0.80\textwidth}\vspace{0pt}
+{\Tiny\textbf{\color{ink}References.}
+[1]~Bless PJ, Schmutz C, Suter K, et al. A tradition and an epidemic: determinants of the campylobacteriosis winter peak in Switzerland. \emph{Eur J Epidemiol} 2014;29:527--537. \mbox{doi:10.1007/s10654-014-9917-0}.\;
+[2]~Wei W, Schüpbach G, Held L. Time-series analysis of Campylobacter incidence in Switzerland. \emph{Epidemiol Infect} 2015;143:1982--1989. \mbox{doi:10.1017/S0950268814002738}.\;
+\textbf{\color{ink}Data:} Federal Office of Public Health FOPH, Infectious Diseases Dashboard (idd.bag.admin.ch); Federal Office of Meteorology and Climatology MeteoSwiss, Swiss NBCN homogeneous series (CC BY 4.0).\par}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.18\textwidth}\vspace{0pt}\raggedleft
+{\Tiny\textbf{\color{ink}Code and result tables}\\ are open. Code: MIT.\\ Figures and text: CC BY 4.0.\par}
+\end{minipage}
+
+\end{document}
